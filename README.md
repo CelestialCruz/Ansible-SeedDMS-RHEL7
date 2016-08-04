@@ -4,10 +4,21 @@ WIP installation format for SeedDMS using ansible
 #Notes for people wanting to use this playbook
   - For proof of concept I disabled Selinux, however; this is undesirable in production and instead you will have to know the appropriate way to configure Selinux on your machines
   - This playbook assumes your database is on a different machine. If you have everything all on one machine, it's easy enough to adjust this script for a single server.
+  - Make sure you have knowledge of your network as it will be necessary when making adjustment on the script.  
+  - Anything in brackets in the README.md are values that depend on your setup.
 
-#Ansible basics
--
-
+#Ansible basics for CentOS7
+- Install and update ansible;
+      yum -y install epel-release
+      yum -y update
+      yum -y install ansible
+- Verify the installation and version
+       ansible --version
+- Generate key on your Ansible machine.
+  *Accept defaults and leave passphrase empty for now.
+      ssh-keygen -t rsa
+- Next we need to send out the key to the desired machines on the network.
+      ssh-copy-id root@[10.10.2.112]
 #After running the playbook
  - Point your webbrowser to your webserver with SeedDMS installed:
        "http://hostname/seeddms"
