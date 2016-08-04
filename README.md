@@ -10,7 +10,7 @@ WIP installation format for SeedDMS using ansible
 #Ansible basics for CentOS7
 - Install and update ansible;
 
-      yum -y install epel-release
+           yum -y install epel-release
 
       yum -y update
 
