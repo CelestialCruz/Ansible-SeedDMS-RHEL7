@@ -1,5 +1,5 @@
 # Ansible-SeedDMS-RHEL7
-WIP installation format for SeedDMS using ansible
+WIP installation format for SeedDMS using ansible. Instructions in README.md
 
 #Notes for people wanting to use this playbook
   - For proof of concept I disabled Selinux, however; this is undesirable in production and instead you will have to know the appropriate way to configure Selinux on your machines
