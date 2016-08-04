@@ -17,7 +17,7 @@ WIP installation format for SeedDMS using ansible
            yum -y install ansible
 
 - Verify the installation and version
-       ansible --version
+           ansible --version
 - Generate key on your Ansible machine.
   *Accept defaults and leave passphrase empty for now.
       ssh-keygen -t rsa
