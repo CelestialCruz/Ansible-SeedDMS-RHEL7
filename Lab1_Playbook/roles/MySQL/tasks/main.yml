@@ -15,4 +15,4 @@
   mysql_db: name=seeddms state=present
 
 - name: Create Application DB User
-  mysql_user: name=seeddms password=Fullsail1! priv=*.*:ALL host='%' state=present
+  mysql_user: name=seeddms password=password priv=*.*:ALL host='%' state=present
