@@ -1,0 +1,17 @@
+---
+# These tasks install http and the php modules.
+
+- name: Install httpd and php
+  yum: name={{ item }} state=present
+  with_items:
+   - httpd
+   - mod_ssl
+   - php
+   - php-mysql
+   - php-pear
+   - php-pear-Log
+   - php-gd
+   - php-mbstring
+
+- name: http service state
+  service: name=httpd state=started enabled=yes

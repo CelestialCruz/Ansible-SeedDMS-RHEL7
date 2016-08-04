@@ -1,0 +1,23 @@
+---
+
+- name: apply common configuration to all nodes
+  hosts: all
+  remote_user: root
+
+  roles:
+    - Common
+
+- name: deploy MySQL and configure the databases
+  hosts: dbservers
+  remote_user: root
+
+  roles:
+    - MySQL
+
+- name: configure and deploy the webservers
+  hosts: webservers
+  remote_user: root
+
+  roles:
+    - apache
+    - SeedDMS

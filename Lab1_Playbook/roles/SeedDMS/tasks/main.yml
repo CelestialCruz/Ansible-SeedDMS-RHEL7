@@ -1,0 +1,55 @@
+---
+
+# This playbook will install SeedDMS and configure it towards the database
+
+- name: Download SeedDMS components 
+  get_url: url={{ item }} dest=/var/www/html
+  with_items:
+    - "http://downloads.sourceforge.net/project/seeddms/seeddms-5.0.4/SeedDMS_Core-5.0.4.tgz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fseeddms%2Ffiles%2Fseeddms-5.0.4%2F&ts=1470249526&use_mirror=heanet"
+    - "http://downloads.sourceforge.net/project/seeddms/seeddms-5.0.4/SeedDMS_Preview-1.1.9.tgz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fseeddms%2Ffiles%2Fseeddms-5.0.4%2F&ts=1470251243&use_mirror=pilotfiber"
+    - "http://downloads.sourceforge.net/project/seeddms/seeddms-5.0.4/SeedDMS_Lucene-1.1.9.tgz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fseeddms%2Ffiles%2Fseeddms-5.0.4%2F&ts=1470236169&use_mirror=heanet"
+
+- name: Pear install the downloaded files
+  command: pear install {{ item }}
+  with_items:
+    - /var/www/html/SeedDMS_Core-5.0.4.tgz
+    - /var/www/html/SeedDMS_Lucene-1.1.9.tgz
+    - /var/www/html/SeedDMS_Preview-1.1.9.tgz
+
+- name: Prep WebDVA download 
+  command: pear config-set preferred_state beta
+
+- name: Download WebDVA  
+  pear: name=HTTP_WebDAV_Server state=present
+
+- name: Download and extract SeedDMS file
+  unarchive: src="http://downloads.sourceforge.net/project/seeddms/seeddms-5.0.4/seeddms-5.0.4.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fseeddms%2Ffiles%2Fseeddms-5.0.4%2F&ts=1470236050&use_mirror=pilotfiber" dest=/var/www/html copy=no
+
+- name: Move and rename extracted file
+  command: mv /var/www/html/seeddms-5.0.4 /var/www/html/seeddms
+
+- name: Create necessary data files
+  file: path=/var/www/html/seeddms/{{ item }} state=directory mode=0775
+  with_items:
+    - data
+    - "data/cache"
+    - "data/lucene"
+    - "data/staging"
+
+- name: Create install tool
+  file: path=/var/www/html/seeddms/conf/ENABLE_INSTALL_TOOL state=touch mode=0775
+
+- name: Pass ownership of seeddms files to apache
+  file: path=/var/www/html state=directory owner=apache mode=0775 recurse=yes
+
+- name: Ensure Selinux is disabled
+  lineinfile: dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=disabled
+
+- name: Restart machine with a minute delay. CentOS shutsdown too fast for ansible and needs the delay. 
+  command: shutdown -r +1 "Ansible updates triggered"
+  async: 0
+  poll: 0
+
+- name: waiting for server to come back
+  local_action: wait_for host=webservers state=started delay=90 timeout=120
+  sudo: false
