@@ -17,12 +17,24 @@ WIP installation format for SeedDMS using ansible
            yum -y install ansible
 
 - Verify the installation and version
+
            ansible --version
+           
+  https://cloud.githubusercontent.com/assets/20823757/17412055/c6f4fb7c-5a48-11e6-82b9-e1a6f6635c44.PNG
+  
 - Generate key on your Ansible machine.
   *Accept defaults and leave passphrase empty for now.
-      ssh-keygen -t rsa
+           ssh-keygen -t rsa
+
+https://cloud.githubusercontent.com/assets/20823757/17412058/c95e7ffa-5a48-11e6-801a-bf2ccac1e753.PNG
+
 - Next we need to send out the key to the desired machines on the network.
-      ssh-copy-id root@[10.10.2.112]
+
+           ssh-copy-id root@[10.10.2.112]
+  
+  https://cloud.githubusercontent.com/assets/20823757/17412056/c8019ba6-5a48-11e6-826a-a432ac4928af.PNG
+  
+  
 #After running the playbook
  - Point your webbrowser to your webserver with SeedDMS installed:
        "http://hostname/seeddms"
