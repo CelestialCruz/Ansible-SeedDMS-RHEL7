@@ -12,9 +12,9 @@ WIP installation format for SeedDMS using ansible
 
            yum -y install epel-release
 
-      yum -y update
+           yum -y update
 
-      yum -y install ansible
+           yum -y install ansible
 
 - Verify the installation and version
        ansible --version
