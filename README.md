@@ -24,9 +24,10 @@ WIP installation format for SeedDMS using ansible
   
 - Generate key on your Ansible machine.
   *Accept defaults and leave passphrase empty for now.
+
            ssh-keygen -t rsa
 
-https://cloud.githubusercontent.com/assets/20823757/17412058/c95e7ffa-5a48-11e6-801a-bf2ccac1e753.PNG
+  https://cloud.githubusercontent.com/assets/20823757/17412058/c95e7ffa-5a48-11e6-801a-bf2ccac1e753.PNG
 
 - Next we need to send out the key to the desired machines on the network.
 
