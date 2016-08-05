@@ -35,7 +35,15 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
   
   https://cloud.githubusercontent.com/assets/20823757/17412056/c8019ba6-5a48-11e6-826a-a432ac4928af.PNG
   
-  
+# Install and use git to download playbook
+- Install git on your Ansible machine
+
+           yum install git
+
+- Download git repository
+
+           git clone https://github.com/CelestialCruz/Ansible-SeedDMS-RHEL7.git
+
 #After running the playbook
  - Point your webbrowser to your webserver with SeedDMS installed:
        "http://hostname/seeddms"
