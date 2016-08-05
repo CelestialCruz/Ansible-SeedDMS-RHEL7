@@ -48,6 +48,7 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
 - Head into the "Lab1_Playbook" directory
 
 - Next edit the "hosts" files and put the IP address of your webserver under "[webservers]" and your database server under "[dbservers]"
+
 https://cloud.githubusercontent.com/assets/20823757/17447586/38fba598-5b1d-11e6-8630-6725336852ac.PNG
 
 - Finally, run the playbook
