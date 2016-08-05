@@ -40,10 +40,13 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
 
            yum install git
 
-- Download git repository
+- Download git repository into local directory
 
            git clone https://github.com/CelestialCruz/Ansible-SeedDMS-RHEL7.git
 
+# Use playbook
+- Head into the "Lab1_Playbook" directory
+- Next edit the "hosts" files and put the IP address of your webserver under "[webservers]" and your database server under "[dbservers]"
 #After running the playbook
  - Point your webbrowser to your webserver with SeedDMS installed:
        "http://hostname/seeddms"
