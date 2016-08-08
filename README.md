@@ -29,7 +29,7 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
 
   https://cloud.githubusercontent.com/assets/20823757/17412058/c95e7ffa-5a48-11e6-801a-bf2ccac1e753.PNG
 
-- Next we need to send out the key to the desired machines on the network.
+- Next we need to send out the key to every webhost and database  on the network.
 
            ssh-copy-id root@[10.10.2.112]
   
