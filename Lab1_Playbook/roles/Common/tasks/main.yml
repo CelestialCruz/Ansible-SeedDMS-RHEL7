@@ -5,6 +5,10 @@
   - name: Install basic features
     yum: name={{ item }} state=present
     with_items:
+      - epel-release
       - nano
       - wget
       - libselinux-python
+      
+  - name: update CentOS
+    yum: name=* state=latest update_cache=yes
