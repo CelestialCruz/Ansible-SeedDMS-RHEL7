@@ -38,7 +38,7 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
 # Install and use git to download playbook
 - Install git on your Ansible machine
 
-           yum install git
+           yum -y install git
 
 - Download git repository into local directory
 
