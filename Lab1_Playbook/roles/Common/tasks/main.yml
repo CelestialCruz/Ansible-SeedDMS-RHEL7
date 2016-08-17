@@ -1,6 +1,6 @@
 ---
 
-#The purpose of this task is to install common applications across all machines. 
+#The purpose of this task is to install common applications across all machines and update them to their latest versions. 
 
   - name: Install basic features
     yum: name={{ item }} state=present
