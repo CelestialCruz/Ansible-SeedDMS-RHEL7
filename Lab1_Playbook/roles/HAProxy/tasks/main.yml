@@ -1,0 +1,22 @@
+---
+
+#The purpose of this task is to install common applications across all machines. 
+
+  - name: Install HAProxy features
+    yum: name=haproxy state=present
+
+  - name: Move copy of original haproxy config file for reference
+    command: mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.org 
+
+  - name: Create HAProxy config file using preconfigured template
+    template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+      mode: 0644
+      validate: haproxy -f %s -c -q
+
+  - name: restart haproxy
+    service: name=haproxy state=restarted
+
+  - name: Ensure HAProxy is started and enabled on boot.
+    service: name=haproxy state=started enabled=yes
