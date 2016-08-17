@@ -21,3 +21,10 @@
   roles:
     - apache
     - SeedDMS
+
+- name: configure and deploy HAProxy
+  hosts: haproxysvr
+  remote_user: root
+
+  roles:
+    - HAProxy
