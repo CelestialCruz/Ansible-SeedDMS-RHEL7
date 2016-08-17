@@ -50,7 +50,7 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
 
 - Next edit the "hosts" files and put the IP address of your webserver under "[webservers]", database servers under "[dbservers]", and HAProxy server under "[haproxysvr]"
 
-https://cloud.githubusercontent.com/assets/20823757/17447586/38fba598-5b1d-11e6-8630-6725336852ac.PNG
+https://cloud.githubusercontent.com/assets/20823757/17723147/b80f3bce-6405-11e6-8455-fe3dc015ea1e.png
 
 - Finally, run the playbook
 
