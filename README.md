@@ -6,6 +6,7 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
   - This playbook assumes your database is on a different machine. If you have everything all on one machine, it's easy enough to adjust this script for a single server.
   - Make sure you have knowledge of your network as it will be necessary when making adjustment on the script.  
   - Anything in brackets in the README.md are values that depend on your setup.
+  - You'll notice something funny in the haproxy.cfg.j2 file. This is an issue of me deciding on how best to tackle the balance of minimal user knowledge, and actual use. For now it's more a proof of concept. 
 
 #Ansible basics for CentOS7
 - Install and update ansible;
