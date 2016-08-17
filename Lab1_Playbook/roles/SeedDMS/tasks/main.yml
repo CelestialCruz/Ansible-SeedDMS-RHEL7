@@ -44,6 +44,13 @@
 
 - name: Ensure Selinux is disabled
   lineinfile: dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=disabled
+  
+- name: Make SeedDMS the default webpage displayed
+  blocinfile:
+    dest: /etc/httpd/conf.d/seeddms.conf
+    block: |
+      RewriteEngine on
+      RedirectMatch ^/$ /seeddms/
 
 - name: Restart machine with a minute delay. CentOS shutsdown too fast for ansible and needs the delay. 
   command: shutdown -r +1 "Ansible updates triggered"
