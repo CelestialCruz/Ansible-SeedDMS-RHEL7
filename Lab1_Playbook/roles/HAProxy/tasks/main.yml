@@ -3,7 +3,10 @@
 #The purpose of this task is to install common applications across all machines. 
 
   - name: Install HAProxy features
-    yum: name=haproxy state=present
+    yum: name={{ item }} state=present
+    with_items:
+      - haproxy
+      - openssl-devel
 
   - name: Move copy of original haproxy config file for reference
     command: mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.org 
