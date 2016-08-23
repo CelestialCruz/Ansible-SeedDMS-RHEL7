@@ -46,15 +46,15 @@ WIP installation format for SeedDMS using ansible. Instructions in README.md
            git clone https://github.com/CelestialCruz/Ansible-SeedDMS-RHEL7.git
 
 # Use playbook
-- Head into the "Lab1_Playbook" directory
+- Head into the "Ansible-SeedDMS-RHEL7" directory
 
-- Next edit the "hosts" files and put the IP address of your webserver under "[webservers]", database servers under "[dbservers]", and HAProxy server under "[haproxysvr]"
+-  Edit the "hosts" files and put the IP address of your webserver under "[webservers]", database servers under "[dbservers]", Redis server under [redissvr]", and HAProxy server under "[haproxysvr]"
 
 https://cloud.githubusercontent.com/assets/20823757/17723147/b80f3bce-6405-11e6-8455-fe3dc015ea1e.png
 
 - Finally, run the playbook
 
-           ansible-playbook -i hosts lab1.yml
+           ansible-playbook -i hosts project.yml
 
 #After running the playbook
  - Point your webbrowser to your webserver with SeedDMS installed:
