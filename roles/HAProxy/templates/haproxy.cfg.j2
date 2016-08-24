@@ -35,16 +35,16 @@ frontend http-in
     mode http
       # set default backend
     default_backend    backend_servers
-      # send X-Forwarded-For header
-    option             forwardfor
 
 # define backend
 backend backend_servers
       # balance with roundrobin
     balance            roundrobin
+      # Track client IP
+    option             forwardfor
       # Sticky session definition
-    cookie SESSION_ID prefix
+    cookie SESSION_ID insert indirect nocache
       # define backend servers
     {% for host in groups.webservers %}
-    server             {{ host }} {{ host }}:80 cookie check
+    server             {{ host }} {{ host }}:80 check cookie {{ host }}
     {% endfor %}
