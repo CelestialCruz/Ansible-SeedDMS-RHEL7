@@ -45,8 +45,11 @@
 - name: Ensure Selinux is disabled
   lineinfile: dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=disabled
   
+- name: Make SeedDMS.conf file
+  file: path=/etc/httpd/conf.d/seeddms.conf state=touch mode=0775
+  
 - name: Make SeedDMS the default webpage displayed
-  blocinfile:
+  blockinfile:
     dest: /etc/httpd/conf.d/seeddms.conf
     block: |
       RewriteEngine on
