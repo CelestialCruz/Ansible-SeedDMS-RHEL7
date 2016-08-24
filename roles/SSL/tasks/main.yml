@@ -6,7 +6,7 @@
     yum: name=openssl-devel state=present
 
   - name: Make directory for files
-    file: path:/etc/ssl/xip.io state=directory mode=0755 
+    file: path=/etc/ssl/xip.io state=directory mode=0755 
 
   - name: Create certificate
     command: openssl req -new -nodes -x509 -subj "/C=US/ST=Florida/L=Orlando/O=IT/CN=seeddms.project" -days 365 -keyout /etc/ssl/xip.io/project.key 1024 -out /etc/ssl/xip.io/project.crt
