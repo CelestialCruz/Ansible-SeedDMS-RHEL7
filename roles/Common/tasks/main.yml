@@ -9,6 +9,7 @@
       - nano
       - wget
       - libselinux-python
+      - ntp
       
   - name: update CentOS
     yum: name=* state=latest update_cache=yes
