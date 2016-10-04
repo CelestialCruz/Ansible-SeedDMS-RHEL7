@@ -11,5 +11,8 @@
       - libselinux-python
       - ntp
       
+  - name: Enable ntp
+  - service: name=ntpd enabled=yes
+      
   - name: update CentOS
     yum: name=* state=latest update_cache=yes
